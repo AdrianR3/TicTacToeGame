@@ -1,6 +1,6 @@
-package me.tictactoe.util;
+package me.adrianr3.tictactoe.util;
 
-import me.tictactoe.GameBoard;
+import me.adrianr3.tictactoe.board.GameBoard;
 
 import java.io.PrintStream;
 import java.util.Arrays;
@@ -16,7 +16,6 @@ public class PrintUtil {
                 if (i < 10) sb.append(' ');
             }
         }
-//        sb.append(" 0, 1, 2 \n");
         sb.append(" \n");
         int i = 0;
         for (int[] row : board.getBoardArray()) {

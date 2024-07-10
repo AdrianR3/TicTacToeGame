@@ -1,8 +1,10 @@
-package me.tictactoe;
+package me.adrianr3.tictactoe;
 
-import me.tictactoe.board.Coord;
-import me.tictactoe.util.PrintUtil;
-import me.tictactoe.util.ScannerUtil;
+import me.adrianr3.tictactoe.board.GameBoard;
+import me.adrianr3.tictactoe.game.Referee;
+import me.adrianr3.tictactoe.util.PrintUtil;
+import me.adrianr3.tictactoe.util.ScannerUtil;
+import me.adrianr3.tictactoe.board.Coord;
 
 import java.util.Scanner;
 

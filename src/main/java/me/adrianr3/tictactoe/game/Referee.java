@@ -1,4 +1,6 @@
-package me.tictactoe;
+package me.adrianr3.tictactoe.game;
+
+import me.adrianr3.tictactoe.board.GameBoard;
 
 public class Referee {
 

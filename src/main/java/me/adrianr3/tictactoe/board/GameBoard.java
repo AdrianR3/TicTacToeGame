@@ -1,6 +1,4 @@
-package me.tictactoe;
-
-import me.tictactoe.board.Coord;
+package me.adrianr3.tictactoe.board;
 
 import java.util.Arrays;
 

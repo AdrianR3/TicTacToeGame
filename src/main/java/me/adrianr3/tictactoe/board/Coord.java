@@ -1,4 +1,4 @@
-package me.tictactoe.board;
+package me.adrianr3.tictactoe.board;
 
 public class Coord {
     public final int x;
