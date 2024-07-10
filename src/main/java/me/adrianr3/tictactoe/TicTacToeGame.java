@@ -2,10 +2,12 @@ package me.adrianr3.tictactoe;
 
 import me.adrianr3.tictactoe.board.GameBoard;
 import me.adrianr3.tictactoe.game.Referee;
+import me.adrianr3.tictactoe.util.Colors;
 import me.adrianr3.tictactoe.util.PrintUtil;
 import me.adrianr3.tictactoe.util.ScannerUtil;
 import me.adrianr3.tictactoe.board.Coord;
 
+import java.awt.*;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -18,7 +20,7 @@ public class TicTacToeGame {
         System.out.print("Game size: ");
         board = new GameBoard(s.nextInt());
 
-        while (Referee.checkBoard(board) == Referee.Result.NOOP) {
+        do {
 
             PrintUtil.printBoard(board, System.out);
 
@@ -35,14 +37,17 @@ public class TicTacToeGame {
 
 //            TODO: Add opponent algorithm
 
-        }
+        } while (Referee.checkBoard(board) == Referee.Result.NOOP);
 
+        System.out.println();
         switch (Referee.checkBoard(board)) {
             case NOOP -> throw new IllegalStateException("Outcome cannot be NOOP");
             case TIE -> System.out.println("Game Tied");
             case PLAYER_WIN -> System.out.println(Colors.GREEN_BOLD + "You won!" + Colors.RESET);
             case OPPONENT_WIN -> System.out.println(Colors.RED_BOLD + "You lost! :(" + Colors.RESET);
         }
+
+        PrintUtil.printBoard(board, System.out);
 
     }
 

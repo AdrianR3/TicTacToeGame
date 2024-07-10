@@ -25,7 +25,7 @@ public class GameBoard {
     }
 
     public void performMove(Coord coord, Player player) {
-        board[coord.x][coord.y] = player.getBoardValue();
+        board[coord.y][coord.x] = player.getBoardValue();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class GameBoard {
     }
 
     public enum Player {
-        SELF(1), OPPONENT(2);
+        NOBODY(0), SELF(1), OPPONENT(2);
 
         private final int boardValue;
         Player(int boardValue) {
