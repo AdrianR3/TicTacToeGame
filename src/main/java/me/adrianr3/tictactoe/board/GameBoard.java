@@ -51,5 +51,14 @@ public class GameBoard {
             return boardValue;
         }
 
+        public static Player fromBoardValue(int boardValue) {
+            for (Player player : values()) {
+                if (player.getBoardValue() == boardValue) {
+                    return player;
+                }
+            }
+            throw new IllegalArgumentException(boardValue + "is not a board value.");
+        }
+
     }
 }
