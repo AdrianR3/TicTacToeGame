@@ -2,7 +2,8 @@ package me.tictactoe;
 
 public class Referee {
 
-    public static Result checkBoard() {
+    public static Result checkBoard(GameBoard board) {
+//        TODO: Implement board checking
         return Result.NOOP;
     }
 

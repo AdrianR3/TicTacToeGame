@@ -1,5 +1,9 @@
 package me.tictactoe;
 
+import me.tictactoe.board.Coord;
+
+import java.util.Arrays;
+
 public class GameBoard {
 
     private int[][] board;
@@ -10,7 +14,7 @@ public class GameBoard {
         board = new int[size][size];
     }
 
-    public int[][] getBoard() {
+    public int[][] getBoardArray() {
         return board;
     }
 
@@ -20,5 +24,34 @@ public class GameBoard {
 
     public int getSize() {
         return size;
+    }
+
+    public void performMove(Coord coord, Player player) {
+        board[coord.x][coord.y] = player.getBoardValue();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("GameBoard{\n");
+        for (int[] row : board) {
+            sb.append(Arrays.toString(row)).append("\n");
+        }
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public enum Player {
+        SELF(1), OPPONENT(2);
+
+        private final int boardValue;
+        Player(int boardValue) {
+            this.boardValue = boardValue;
+        }
+
+        public int getBoardValue() {
+            return boardValue;
+        }
+
     }
 }

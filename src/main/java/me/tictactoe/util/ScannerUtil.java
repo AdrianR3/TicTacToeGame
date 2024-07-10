@@ -1,4 +1,6 @@
-package me.tictactoe;
+package me.tictactoe.util;
+
+import me.tictactoe.board.Coord;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
