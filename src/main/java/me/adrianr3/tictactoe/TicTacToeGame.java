@@ -40,8 +40,8 @@ public class TicTacToeGame {
         switch (Referee.checkBoard(board)) {
             case NOOP -> throw new IllegalStateException("Outcome cannot be NOOP");
             case TIE -> System.out.println("Game Tied");
-            case PLAYER_WIN -> System.out.println("You won!");
-            case OPPONENT_WIN -> System.out.println("You lost! :(");
+            case PLAYER_WIN -> System.out.println(Colors.GREEN_BOLD + "You won!" + Colors.RESET);
+            case OPPONENT_WIN -> System.out.println(Colors.RED_BOLD + "You lost! :(" + Colors.RESET);
         }
 
     }
