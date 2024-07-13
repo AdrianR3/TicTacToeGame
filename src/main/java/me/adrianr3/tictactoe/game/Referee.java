@@ -88,9 +88,12 @@ public class Referee {
         if (player != 0) return GameBoard.Player.fromPlayerInteger(player, self);
 
 //        Check reverse diagonal from top right
-        for (int x = Math.min(board.length, board[0].length)-1; x > 0; x--) {
+        for (int x = Math.min(board.length, board[0].length)-1; x >= 0; x--) {
             int y = board[0].length - 1 - x;
-            if (board[y][x] != board[board[0].length - 1][0]) break;
+            if (board[y][x] != board[0][board[0].length - 1]) {
+                player = 0;
+                break;
+            }
             player = board[0][board[y].length - 1];
         }
 

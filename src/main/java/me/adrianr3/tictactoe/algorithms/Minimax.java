@@ -53,23 +53,33 @@ public class Minimax implements TicTacToeAlgorithm {
         return minimax(board, (currentPlayer == selfPlayer) ? 1 : selfPlayer).getScore();
     }
 
-    private boolean checkWin(int[][] board, int player) {
-//        return Referee.checkBoard(board, player) == Referee.Result.PLAYER_WIN;
+//    private void quickCheck(int[][] board, int selfPlayer, boolean correctValue) {
+//        boolean good = (Referee.checkBoard(board, selfPlayer) == Referee.Result.PLAYER_WIN) == correctValue;
+//
+//        if (!good) {
+//            Referee.checkBoard(board, selfPlayer);
+//            throw new IllegalStateException("Poo Poo");
+//        }
+//    }
 
-        for (int i = 0; i < 3; i++) {
-            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) return true;
-            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) return true;
-        }
-        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) return true;
-        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) {
-//            if (Referee.checkBoard(board, player) == Referee.Result.PLAYER_WIN) {
-                System.out.println(
-                        Referee.checkBoard(board, player) == Referee.Result.PLAYER_WIN
-                );
-//            }
-            return true;
-        }
-        return false;
+    private boolean checkWin(int[][] board, int player) {
+        return Referee.checkBoard(board, player) == Referee.Result.PLAYER_WIN;
+
+//        for (int i = 0; i < 3; i++) {
+//            if (board[i][0] == player && board[i][1] == player && board[i][2] == player) { quickCheck(board, player, true); return true;}
+//            if (board[0][i] == player && board[1][i] == player && board[2][i] == player) { quickCheck(board, player, true); return true;}
+//        }
+//        if (board[0][0] == player && board[1][1] == player && board[2][2] == player) { quickCheck(board, player, true); return true;}
+//        if (board[0][2] == player && board[1][1] == player && board[2][0] == player) { quickCheck(board, player, true); return true;}
+//////            if (Referee.checkBoard(board, player) == Referee.Result.PLAYER_WIN) {
+////                System.out.println(
+////                        Referee.checkBoard(board, player) == Referee.Result.PLAYER_WIN
+////                );
+//////            }
+////            return true;
+////        }
+//        quickCheck(board, player, false);
+//        return false;
     }
 
     private static class PotentialMove {
