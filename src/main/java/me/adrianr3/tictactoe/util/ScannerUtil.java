@@ -14,7 +14,7 @@ public class ScannerUtil {
 
         while (x < 0 || x > (size - 1)) {
             try {
-                System.out.print("x: ");
+                System.out.print(Colors.BLUE+"x: "+Colors.RESET);
                 x = scanner.nextInt();
             } catch (InputMismatchException e) {
                 e.printStackTrace();
@@ -24,7 +24,7 @@ public class ScannerUtil {
 
         while (y < 0 || y > (size - 1)) {
             try {
-                System.out.print("y: ");
+                System.out.print(Colors.RED+"y: "+Colors.RESET);
                 y = scanner.nextInt();
             } catch (InputMismatchException e) {
                 e.printStackTrace();

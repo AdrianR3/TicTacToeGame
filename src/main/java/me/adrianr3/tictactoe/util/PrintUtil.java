@@ -12,6 +12,7 @@ public class PrintUtil {
         if (board.getBoardArray().length > 10) sb.append(' ');
 
 //        Print header
+        sb.append(Colors.BLUE);
         for (int i = 0; i < board.getBoardArray()[0].length; i++) {
             sb.append(i);
             if (i < board.getBoardArray()[0].length - 1) {
@@ -19,13 +20,16 @@ public class PrintUtil {
                 if (i < 10) sb.append(' ');
             }
         }
+        sb.append(Colors.RESET);
+        sb.append(" \n");
 
 //        Print array and left header
-        sb.append(" \n");
         int i = 0;
         for (int[] row : board.getBoardArray()) {
 //            Print header
+            sb.append(Colors.RED);
             sb.append(i);
+            sb.append(Colors.RESET);
             sb.append(' ');
             if (i++ < 10 && board.getBoardArray().length > 10) sb.append(' ');
 

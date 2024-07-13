@@ -45,7 +45,7 @@ public class Referee {
 
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[0].length; y++) {
-                if (board[y][x] != board[y][0]) { player = 0; break; }
+                if (board[y][x] != board[0][x]) { player = 0; break; }
                 player = board[y][x];
             }
             if (player != 0) break;

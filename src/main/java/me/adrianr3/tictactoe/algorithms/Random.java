@@ -15,10 +15,10 @@ public class Random implements TicTacToeAlgorithm {
 
         List<Coord> zeros = new ArrayList<>();
 
-        for (int i = 0; i < boardArray.length; i++) {
-            for (int j = 0; j < boardArray[i].length; j++) {
-                if (boardArray[i][j] == 0) {
-                    zeros.add(new Coord(j, i));
+        for (int y = 0; y < boardArray.length; y++) {
+            for (int x = 0; x < boardArray[y].length; x++) {
+                if (boardArray[y][x] == 0) {
+                    zeros.add(new Coord(x, y));
                 }
             }
         }

@@ -54,7 +54,7 @@ public class TicTacToeGame {
     }
 
     static boolean checkMove(GameBoard board, Coord coord) {
-         return board.getBoardArray()[coord.x][coord.y] == 0;
+         return board.getBoardArray()[coord.y][coord.x] == 0;
     }
 
 }
