@@ -23,14 +23,26 @@ public class Referee {
             return Result.getFromPlayer(columns);
         }
 
+        if (checkTie(boardArray)) return Result.TIE;
+
         return Result.NOOP;
+    }
+
+    private static boolean checkTie(int[][] board) {
+        for (int[] row : board) {
+            for (int columnInt : row) {
+                if (columnInt == 0) return false;
+            }
+        }
+
+        return true;
     }
 
     private static GameBoard.Player checkRows(int[][] board) {
         int player = 0;
 
         for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[0].length; x++) {
+            for (int x = 0; x < board[y].length; x++) {
                 if (board[y][x] != board[y][0]) { player = 0; break; }
                 player = board[y][x];
             }
@@ -69,9 +81,10 @@ public class Referee {
         if (player != 0) return GameBoard.Player.fromBoardValue(player);
 
 //        Check reverse diagonal from top right
-        for (int i = Math.min(board.length, board[0].length)-1; i > 0; i--) {
-            if (board[i][i] != board[board[0].length - 1][0]) break;
-            player = board[board[0].length - 1][0];
+        for (int x = Math.min(board.length, board[0].length)-1; x > 0; x--) {
+            int y = board[0].length - 1 - x;
+            if (board[y][x] != board[board[0].length - 1][0]) break;
+            player = board[0][board[y].length - 1];
         }
 
         return GameBoard.Player.fromBoardValue(player);

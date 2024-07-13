@@ -34,7 +34,9 @@ public class PrintUtil {
             if (i++ < 10 && board.getBoardArray().length > 10) sb.append(' ');
 
 //            Print row
-            sb.append(Arrays.toString(row)).append("\n");
+            sb.append(Arrays.toString(row)
+                    .replaceAll("1", Colors.YELLOW+"█"+Colors.RESET)
+            ).append("\n");
         }
 
         sout.print(sb);
