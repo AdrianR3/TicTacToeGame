@@ -20,7 +20,9 @@ public class TicTacToeGame {
 
         System.out.print("Game size: ");
         board = new GameBoard(s.nextInt());
-        TicTacToeAlgorithm opponent = new Minimax();
+
+//        TODO: Option to switch algorithm
+        TicTacToeAlgorithm opponent = new Minimax(2);
 
         do {
 
@@ -37,7 +39,7 @@ public class TicTacToeGame {
 
             if (Referee.checkBoard(board, 1) != Referee.Result.NOOP) break;
 
-            board.performMove(opponent.onMove(board, 2), GameBoard.Player.OPPONENT);
+            board.performMove(opponent.onMove(board), GameBoard.Player.OPPONENT);
 
         } while (Referee.checkBoard(board, 1) == Referee.Result.NOOP);
 
@@ -50,6 +52,8 @@ public class TicTacToeGame {
         }
 
         PrintUtil.printBoard(board, System.out);
+
+//        TODO: Play again option/feature
 
     }
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class Random implements TicTacToeAlgorithm {
 
     @Override
-    public Coord onMove(GameBoard board, int playerInteger) {
+    public Coord onMove(GameBoard board) {
         int[][] boardArray = board.getBoardArray();
 
         List<Coord> zeros = new ArrayList<>();
