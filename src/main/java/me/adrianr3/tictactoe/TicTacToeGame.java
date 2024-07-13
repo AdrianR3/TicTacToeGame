@@ -1,13 +1,14 @@
 package me.adrianr3.tictactoe;
 
+import me.adrianr3.tictactoe.algorithms.Random;
+import me.adrianr3.tictactoe.algorithms.TicTacToeAlgorithm;
+import me.adrianr3.tictactoe.board.Coord;
 import me.adrianr3.tictactoe.board.GameBoard;
 import me.adrianr3.tictactoe.game.Referee;
 import me.adrianr3.tictactoe.util.Colors;
 import me.adrianr3.tictactoe.util.PrintUtil;
 import me.adrianr3.tictactoe.util.ScannerUtil;
-import me.adrianr3.tictactoe.board.Coord;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class TicTacToeGame {
@@ -19,6 +20,7 @@ public class TicTacToeGame {
 
         System.out.print("Game size: ");
         board = new GameBoard(s.nextInt());
+        TicTacToeAlgorithm opponent = new Random();
 
         do {
 
@@ -35,7 +37,7 @@ public class TicTacToeGame {
 
             if (Referee.checkBoard(board) != Referee.Result.NOOP) break;
 
-//            TODO: Add opponent algorithm
+            board.performMove(opponent.onMove(board, 2), GameBoard.Player.OPPONENT);
 
         } while (Referee.checkBoard(board) == Referee.Result.NOOP);
 
