@@ -1,6 +1,6 @@
 package me.adrianr3.tictactoe;
 
-import me.adrianr3.tictactoe.algorithms.Random;
+import me.adrianr3.tictactoe.algorithms.Minimax;
 import me.adrianr3.tictactoe.algorithms.TicTacToeAlgorithm;
 import me.adrianr3.tictactoe.board.Coord;
 import me.adrianr3.tictactoe.board.GameBoard;
@@ -20,7 +20,7 @@ public class TicTacToeGame {
 
         System.out.print("Game size: ");
         board = new GameBoard(s.nextInt());
-        TicTacToeAlgorithm opponent = new Random();
+        TicTacToeAlgorithm opponent = new Minimax();
 
         do {
 
@@ -35,14 +35,14 @@ public class TicTacToeGame {
 
             board.performMove(moveCoord, GameBoard.Player.SELF);
 
-            if (Referee.checkBoard(board) != Referee.Result.NOOP) break;
+            if (Referee.checkBoard(board, 1) != Referee.Result.NOOP) break;
 
             board.performMove(opponent.onMove(board, 2), GameBoard.Player.OPPONENT);
 
-        } while (Referee.checkBoard(board) == Referee.Result.NOOP);
+        } while (Referee.checkBoard(board, 1) == Referee.Result.NOOP);
 
         System.out.println();
-        switch (Referee.checkBoard(board)) {
+        switch (Referee.checkBoard(board, 1)) {
             case NOOP -> throw new IllegalStateException("Outcome cannot be NOOP");
             case TIE -> System.out.println("Game Tied");
             case PLAYER_WIN -> System.out.println(Colors.GREEN_BOLD + "You won!" + Colors.RESET);

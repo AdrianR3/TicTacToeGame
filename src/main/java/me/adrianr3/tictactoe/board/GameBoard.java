@@ -12,6 +12,11 @@ public class GameBoard {
         board = new int[size][size];
     }
 
+    public GameBoard(int size, int[][] board) {
+        this.size = size;
+        this.board = board;
+    }
+
     public int[][] getBoardArray() {
         return board;
     }
@@ -58,6 +63,11 @@ public class GameBoard {
                 }
             }
             throw new IllegalArgumentException(boardValue + "is not a board value.");
+        }
+
+        public static Player fromPlayerInteger(int boardValue, int selfInteger) {
+            if (boardValue == 0) return NOBODY;
+            return boardValue == selfInteger ? SELF : OPPONENT;
         }
 
     }
