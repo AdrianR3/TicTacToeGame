@@ -34,4 +34,19 @@ public class ScannerUtil {
 
         return new Coord(x, y);
     }
+
+    public static int getAlgorithmId(String prompt) {
+        int id = -1;
+
+        while (id < 0) {
+            try {
+                System.out.print(prompt);
+                id = scanner.nextInt();
+            } catch (InputMismatchException e) {
+                scanner.next();
+            }
+        }
+
+        return id;
+    }
 }

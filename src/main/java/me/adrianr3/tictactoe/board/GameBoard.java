@@ -2,6 +2,7 @@ package me.adrianr3.tictactoe.board;
 
 import java.util.Arrays;
 
+@SuppressWarnings("unused")
 public class GameBoard {
 
     private int[][] board;
