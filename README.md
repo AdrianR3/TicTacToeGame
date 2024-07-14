@@ -1,6 +1,6 @@
-# TicTacToeGame
+# CLI Tic Tac Toe
 
-A full Java Implementation of the Tic Tac Toe game.
+A full Java implementation of the Tic Tac Toe game, playable in the command line.
 
 Supports matching any combination of a manual player, a random player, and minimax.
 
