@@ -48,10 +48,11 @@ public class Minimax extends TicTacToeAlgorithm {
 
     private int minimaxScore(int[][] board, int currentPlayer) {
         if (checkWin(board, selfPlayer)) return 1;
-        if (checkWin(board, selfPlayer == 2 ? 1 : 2)) return -1;
+        if (checkWin(board, 3 - selfPlayer)) return -1;
         if (Referee.checkTie(board)) return 0;
 
-        return minimax(board, currentPlayer == selfPlayer ? 1 : selfPlayer).getScore();
+//        3 - selfPlayer is quick way to flip between 1 and 2
+        return minimax(board, currentPlayer == selfPlayer ? 3 - selfPlayer : selfPlayer).getScore();
     }
 
     private boolean checkWin(int[][] board, int player) {

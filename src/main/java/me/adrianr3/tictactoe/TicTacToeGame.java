@@ -1,6 +1,6 @@
 package me.adrianr3.tictactoe;
 
-import me.adrianr3.tictactoe.algorithms.ManualPlayer;
+import me.adrianr3.tictactoe.algorithms.Minimax;
 import me.adrianr3.tictactoe.algorithms.TicTacToeAlgorithm;
 import me.adrianr3.tictactoe.board.Coord;
 import me.adrianr3.tictactoe.board.GameBoard;
@@ -20,8 +20,8 @@ public class TicTacToeGame {
         System.out.print("Game size: ");
         int size = s.nextInt();
 
-        TicTacToeAlgorithm player1 = new ManualPlayer().setPlayerInt(1);
-        TicTacToeAlgorithm player2 = new ManualPlayer().setPlayerInt(2);
+        TicTacToeAlgorithm player1 = new Minimax().setPlayerInt(1);
+        TicTacToeAlgorithm player2 = new Minimax().setPlayerInt(2);
 
         do {
             System.out.println();
@@ -41,12 +41,15 @@ public class TicTacToeGame {
         if (silent) PrintUtil.printBoard(board, System.out);
 
         do {
+            System.out.println();
 
             if (silent) System.out.println(Colors.GREEN+"Your move: "+Colors.RESET);
             board.performMove(player1.onMove(board), GameBoard.Player.SELF);
             if (silent) PrintUtil.printBoard(board, System.out);
 
             if (Referee.checkBoard(board, 1) != Referee.Result.NOOP) break;
+
+            System.out.println();
 
             if (silent) System.out.println(Colors.PURPLE+"Their move: "+Colors.RESET);
             board.performMove(player2.onMove(board), GameBoard.Player.OPPONENT);
