@@ -62,7 +62,7 @@ public class GameBoard {
                     return player;
                 }
             }
-            throw new IllegalArgumentException(boardValue + "is not a board value.");
+            throw new IllegalArgumentException(boardValue + " is not a board value.");
         }
 
         public static Player fromPlayerInteger(int boardValue, int selfInteger) {

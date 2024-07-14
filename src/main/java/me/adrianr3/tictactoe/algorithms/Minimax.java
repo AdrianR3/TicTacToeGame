@@ -4,17 +4,14 @@ import me.adrianr3.tictactoe.board.Coord;
 import me.adrianr3.tictactoe.board.GameBoard;
 import me.adrianr3.tictactoe.game.Referee;
 
-public class Minimax implements TicTacToeAlgorithm {
+public class Minimax extends TicTacToeAlgorithm {
 
-    private final int selfPlayer;
-
-    public Minimax(int selfPlayer) {
-        this.selfPlayer = selfPlayer;
-    }
+    private int selfPlayer;
 
     @Override
     public Coord onMove(GameBoard board) {
         int[][] boardArray = board.getBoardArray();
+        selfPlayer = getPlayerInt();
 
         return minimax(boardArray, selfPlayer).getCoord();
     }

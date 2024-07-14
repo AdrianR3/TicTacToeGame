@@ -7,7 +7,7 @@ import me.adrianr3.tictactoe.game.Referee;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Random implements TicTacToeAlgorithm {
+public class Random extends TicTacToeAlgorithm {
 
     @Override
     public Coord onMove(GameBoard board) {
