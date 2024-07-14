@@ -19,16 +19,32 @@ public class TicTacToeGame {
     public static void main(String[] args) {
 
         System.out.print("Game size: ");
-        board = new GameBoard(s.nextInt());
+        int size = s.nextInt();
+
+
+        do {
+            System.out.println();
+
+            playGame(size, false);
+
+            System.out.print("Play again? (y) ");
+        } while (s.next().equalsIgnoreCase("y"));
+
+    }
+
+    private static Referee.Result playGame(int size, boolean silent) {
+
+        board = new GameBoard(size);
+        silent = !silent;
 
 //        TODO: Option to switch algorithm
-        TicTacToeAlgorithm opponent = new Minimax(2);
+        TicTacToeAlgorithm player2 = new Minimax(2);
 
         do {
 
-            PrintUtil.printBoard(board, System.out);
+            if (silent) PrintUtil.printBoard(board, System.out);
 
-            System.out.println("Your move: ");
+            if (silent) System.out.println("Your move: ");
             Coord moveCoord;
 
             do {
@@ -39,25 +55,28 @@ public class TicTacToeGame {
 
             if (Referee.checkBoard(board, 1) != Referee.Result.NOOP) break;
 
-            board.performMove(opponent.onMove(board), GameBoard.Player.OPPONENT);
+            board.performMove(player2.onMove(board), GameBoard.Player.OPPONENT);
 
         } while (Referee.checkBoard(board, 1) == Referee.Result.NOOP);
 
-        System.out.println();
-        switch (Referee.checkBoard(board, 1)) {
+        if (silent) System.out.println();
+
+        Referee.Result result = Referee.checkBoard(board, 1);
+
+        switch (result) {
             case NOOP -> throw new IllegalStateException("Outcome cannot be NOOP");
-            case TIE -> System.out.println("Game Tied");
-            case PLAYER_WIN -> System.out.println(Colors.GREEN_BOLD + "You won!" + Colors.RESET);
-            case OPPONENT_WIN -> System.out.println(Colors.RED_BOLD + "You lost! :(" + Colors.RESET);
+            case TIE -> { if (silent) System.out.println("Game Tied"); }
+            case PLAYER_WIN -> { if (silent) System.out.println(Colors.GREEN_BOLD + "You won!" + Colors.RESET); }
+            case OPPONENT_WIN -> { if (silent) System.out.println(Colors.RED_BOLD + "You lost! :(" + Colors.RESET); }
         }
 
-        PrintUtil.printBoard(board, System.out);
+        if (silent) PrintUtil.printBoard(board, System.out);
 
-//        TODO: Play again option/feature
+        return result;
 
     }
 
-    static boolean checkMove(GameBoard board, Coord coord) {
+    private static boolean checkMove(GameBoard board, Coord coord) {
          return board.getBoardArray()[coord.y][coord.x] == 0;
     }
 
