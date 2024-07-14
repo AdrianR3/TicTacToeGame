@@ -30,16 +30,16 @@ public class MyAlgorithm extends TicTacToeAlgorithm {
 }
 ```
 
-To register your algorithm's class, add an enum value to the `Algorithm` enum in `tictactoe.algorithms.Algorithm.java` referencing its class with a unique id:
+To register your algorithm's class, add an enum value to the `Algorithm` enum in `tictactoe.algorithms.Algorithm.java` with a title to be shown to the user:
 
 ```java
 public enum Algorithm {
 
 //  Built-In algorithms
-    PLAYER(ManualPlayer.class, 0), MINIMAX(Minimax.class, 1), RANDOM(Random.class, 2),
+    PLAYER(ManualPlayer.class, "Manual Player"), MINIMAX(Minimax.class, "Minimax"), RANDOM(Random.class, "Random"),
 
 //  Custom Algorithms
-    MYALGORITHM(MyAlgorithm.class, 3);
+    MYALGORITHM(MyAlgorithm.class, "My Algorithm");
 
     // ...
 
