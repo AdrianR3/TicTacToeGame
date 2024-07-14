@@ -4,14 +4,19 @@ import java.lang.reflect.InvocationTargetException;
 
 public enum Algorithm {
 
-    PLAYER(ManualPlayer.class, 0), MINIMAX(Minimax.class, 1), RANDOM(Random.class, 2);
+    PLAYER(ManualPlayer.class, "Manual Player"), MINIMAX(Minimax.class, "Minimax"), RANDOM(Random.class, "Random");
 
-    private final int algorithmId;
+    private int algorithmId;
+    private final String name;
     private final Class<? extends TicTacToeAlgorithm> algorithm;
 
-    Algorithm(Class<? extends TicTacToeAlgorithm> algorithmClazz, int id) {
-        this.algorithmId = id;
+    private static int nextId = 0;
+
+    Algorithm(Class<? extends TicTacToeAlgorithm> algorithmClazz, String name) {
         this.algorithm = algorithmClazz;
+        this.name = name;
+
+        assignAlgorithmId();
     }
 
     public TicTacToeAlgorithm getAlgorithmInstance(int playerInteger) {
@@ -33,5 +38,13 @@ public enum Algorithm {
 
     public int getAlgorithmId() {
         return algorithmId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    private void assignAlgorithmId() {
+        this.algorithmId = nextId++;
     }
 }

@@ -9,13 +9,13 @@ public abstract class TicTacToeAlgorithm {
     private int playerInt = 1;
 
     public abstract Coord onMove(GameBoard board);
-    void onGameEnd(Referee.Result result) {}
+    public void onGameEnd(Referee.Result result) {}
 
-    public int getPlayerInt() {
+    public final int getPlayerInt() {
         return playerInt;
     }
 
-    public TicTacToeAlgorithm setPlayerInt(int playerInt) {
+    public final TicTacToeAlgorithm setPlayerInt(int playerInt) {
         this.playerInt = playerInt;
         return this;
     }
